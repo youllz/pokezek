@@ -6,6 +6,6 @@
 
 <style>
   section {
-    margin: 3rem;
+    padding: 6rem;
   }
 </style>

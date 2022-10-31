@@ -6,7 +6,7 @@ export const pokeStore = writable([])
 
 
 async function getData() {
-  const url = `https://pokeapi.co/api/v2/pokemon?limit=250`
+  const url = `https://pokeapi.co/api/v2/pokemon?limit=500`
   const res = await fetch(url)
   const resJson = await res.json()
 

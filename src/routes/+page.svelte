@@ -79,6 +79,8 @@
     align-items: center;
     justify-content: center;
     position: relative;
+    padding-top: 150px;
+
   }
 
   .categorie-box {

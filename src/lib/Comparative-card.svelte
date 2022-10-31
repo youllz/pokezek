@@ -1,4 +1,19 @@
 <script>
+	import { createEventDispatcher } from "svelte";
+
+
+
+  
+const dispatch = createEventDispatcher()
+function getdis(e) {
+  dispatch('select', {
+    id: e.target.children[1].textContent,
+		color: getComputedStyle(e.target).backgroundColor
+  })
+}
+
+
+
   export let name
   export let id
   export let img
@@ -62,11 +77,10 @@
 </script>
 
 
-<a href="/pokemon/{id}">
 
-  <!-- {#each colors as colore } -->
-    <!-- {#if color === colore.color} -->
-    <div class="card-box" style="--color: {colore.card}">
+  {#each colors as colore }
+    {#if color === colore.color}
+    <div class="card-box" style="--color: {colore.card}" on:click={getdis}>
       <div class="img-box" style="--color: {colore.imgBox}">
         <img src={img} alt={name}>
       </div>
@@ -74,11 +88,10 @@
       <h3 class="name">{name} </h3>
       <h3>{type}</h3>
     </div>
-    <!-- {/if} -->
-  <!-- {/each} -->
+    {/if}
+  {/each}
 
 
-</a>
 
 
 
@@ -86,8 +99,8 @@
 <style>
 
 .card-box {
-  height: 20rem;
-  width: 20rem;
+  height: 15rem;
+  width: 15rem;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -95,21 +108,22 @@
   padding: 10px;
   justify-content: space-between;
   background-color: var(--color);
+  cursor: pointer;
+  transition: transform 0.3s ease-out;
+  margin: 10px;
 }
 
 .img-box {
   border-radius: 100%;
   background-color: var(--color);
+  pointer-events: none;
 }
 
-a {
-  color: #03071e;
-  transition: transform 0.3s ease-out;
-}
-
-a:hover {
+.card-box:hover {
   transform: scale(1.1);
 }
+
+
 
 
 
